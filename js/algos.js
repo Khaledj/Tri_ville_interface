@@ -55,6 +55,8 @@ function insertsort()
         for (let k = i; k > 0; k--) {
             if ( isLess(csvData[k],csvData[k - 1]) ){
                 swap(k,k-1);
+            }else{
+                break;
             }
         }
     }
@@ -70,16 +72,29 @@ function selectionsort()
             if ( isLess(csvData[j],csvData[k])) {
                 k = j;
             }
-            if ( isLess(csvData[k],csvData[i])) {
-                swap(k, i);
-            }
+
         }
+        swap(k, i);
     }
 }
-function bubblesort()
-{
-  console.log("implement me !");
+function bubblesort() {
+    for (let i = 0; i < csvData.length; i++) {
+        let swapped = false;
+
+        for (let j = csvData.length - 1; j >= i + 1; j--) {
+            if (isLess(csvData[j], csvData[j - 1])) {
+                swap(j, j - 1);
+                swapped = true;
+            }
+        }
+        if (swapped == false) {
+            return
+        }
+
+    }
 }
+
+
 function shellsort()
 {
   console.log("implement me !");
